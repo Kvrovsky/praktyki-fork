@@ -73,11 +73,11 @@ Route::delete('v1/jobs/{id}', function($id) { //usun job
 });
 
 
-/*
-Route::get('v1/jobs/{id}', function() { //wyświetl konkretny job     SPRAWDZ CZY DZIALA                ERROR
-    Jobs::find($id)->return Job::{id};
+
+Route::get('v1/jobs/{id}', function($id) { //wyświetl konkretny job
+    return Jobs::find($id);
 });
-*/
+
 
 
 Route::get('v1/users', function() { //wyświetl pracodawców
