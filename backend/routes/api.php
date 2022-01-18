@@ -5,9 +5,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
+|--------------------------------------------------------------------------|
+|                               API Routes                                 |
+|--------------------------------------------------------------------------|
 |
 | Here is where you can register API routes for your application. These
 | routes are loaded by the RouteServiceProvider within a group which
@@ -73,15 +73,15 @@ Route::delete('v1/jobs/{id}', function($id) { //usun job
 });
 
 
-
-Route::get('v1/jobs/{id}', function() { //wyświetl konkretny job     SPRAWDZ CZY DZIALA
-    Jobs::find($id)->return Jobs::{id};
+/*
+Route::get('v1/jobs/{id}', function() { //wyświetl konkretny job     SPRAWDZ CZY DZIALA                ERROR
+    Jobs::find($id)->return Job::{id};
 });
-
+*/
 
 
 Route::get('v1/users', function() { //wyświetl pracodawców
-    return Users:all();
+    return Users::all();
 });
 
 // rejestracja i logowanie w tym miejscu do zrobienia
