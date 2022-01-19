@@ -16,7 +16,8 @@ class CreateJobsTable extends Migration
         Schema::create('jobs', function (Blueprint $table) {
             $table->id('id');
             $table->string('name');
-            $table->string('description');
+            $table->timestamps();
+            /*$table->string('description');
             $table->boolean('permanent');
             $table->boolean('remote');
             $table->float('wage');
@@ -27,7 +28,7 @@ class CreateJobsTable extends Migration
             $table->bigInteger('category_id')->unsigned()->index();
             $table->foreign('category_id')->references('id')->on('categories');
             $table->bigInteger('user_id')->unsigned()->index();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');*/
         });
     }
         /** 

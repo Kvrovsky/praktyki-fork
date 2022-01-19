@@ -3,6 +3,7 @@
 use App\Http\Controllers\ArticleController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\JobController;
 
 /*
 |--------------------------------------------------------------------------|
@@ -28,8 +29,9 @@ Route::delete('/articles/{id}', [ArticleController::class, 'deleteArticle']);
 Route::post('/articles', [ArticleController::class, 'createArticle']);
 */
 
+Route::get('/jobs', [JobController::class, 'listjobs']);
 
-Route::put('api/v1/jobs/{id}', function(Request $request, $id) { //edytuj joba 
+/*Route::put('api/v1/jobs/{id}', function(Request $request, $id) { //edytuj joba 
     //return Jobs::find($id);
     $job = Jobs::findOrFail($id);
     $job->update($request->all());
@@ -74,3 +76,4 @@ Route::get('api/v1/users', function() { //wyświetl pracodawców
 Route::get('api/v1/search', function() {
     Jobs::find($name)->return;
 });
+*/

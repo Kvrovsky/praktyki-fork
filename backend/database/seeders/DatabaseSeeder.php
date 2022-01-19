@@ -13,10 +13,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $user = \App\Models\User::factory()->create();
+        /*$user = \App\Models\User::factory()->create();
         \App\Models\Article::factory(3)->create(['user_id' => $user->id]);
 
         $user2 = \App\Models\User::factory()->create();
         \App\Models\Article::factory(3)->create(['user_id' => $user2->id]);
+
+        $user2 = \App\Models\User::factory()->create();*/
+        \App\Models\Job::factory(3)->create();
     }
+    
 }

@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->string('company');
-            $table->timestamp('registration_date');
+            
         });
     }
 
