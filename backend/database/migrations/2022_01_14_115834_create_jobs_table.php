@@ -17,17 +17,18 @@ class CreateJobsTable extends Migration
             $table->id('id');
             $table->string('name');
             $table->string('description');
-            $table->boolean('permanent');
-            $table->boolean('remote');
+            $table->boolean('permanent')->default(1);
+            $table->boolean('remote')->default(0);
             $table->float('wage');
             $table->string('wage_period'); // rozliczanie, rocznie, miesięcznie, tygodniowo itp
             $table->boolean('negotiable');
             $table->string('city');
-            $table->string('days');
+            $table->string('days')->default("M-F");
             $table->bigInteger('category_id')->unsigned()->index();
             $table->foreign('category_id')->references('id')->on('categories');
             $table->bigInteger('user_id')->unsigned()->index();
             $table->foreign('user_id')->references('id')->on('users');
+            $table->timestamps();
         });
     }
         /** 

@@ -16,16 +16,16 @@ class JobFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
-            'description' => $this->faker->description(),
-            'permanent' => $this->faker->permanent(),
-            'remote' => $this->faker->remote(),
-            'wage' => $this->faker->wage(),
-            'wage_period' => $this->faker->wage_period(),
-            'negotiable' => $this->faker->negotiable(),
+            'description' => $this->faker->sentence(),
+            // 'permanent' => $this->faker->permanent(),
+            'remote' => $this->faker->numberBetween(0,1),
+            'wage' => $this->faker->numberBetween(1,25695),
+            // 'wage_period' => $this->faker->wage_period(),
+            'negotiable' => $this->faker->numberBetween(0,1),
             'city' => $this->faker->city(),
-            'days' => $this->faker->days(),
-            'category_id' => $this->faker->category_id(),
-            'user_id' => $this->faker->user_id(),
+            // 'days' => $this->faker->days(),
+            // 'category_id' => $this->faker->category_id(),
+            // 'user_id' => $this->faker->user_id(),
         ];
     }
 
