@@ -59,7 +59,7 @@ Route::get('/v1/jobs/{id}', function($id) { //wyświetl konkretny job
 
 
 Route::get('/v1/users', function() { //wyświetl pracodawców
-    return users::all();
+    return Users::all();
 });
 
 // rejestracja i logowanie w tym miejscu do zrobienia
