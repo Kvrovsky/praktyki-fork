@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\AuthController;
+// use App\Job;
 
 /*
 |--------------------------------------------------------------------------|
@@ -32,6 +33,16 @@ Route::post('/login', [AuthController::class, 'login']); //login user
 
 
 Route::post('/me', [AuthController::class, 'me'])->middleware('auth:sanctum'); //fetch current user, jedynie dla autoryzowanych 
+
+
+// Route::get('/v1/users', [UserController::class, 'getuser']); //wyswietl userow
+
+
+
+
+
+
+
 
 
 
@@ -73,8 +84,6 @@ Route::post('/me', [AuthController::class, 'me'])->middleware('auth:sanctum'); /
 // Route::get('/v1/users', function() { //wyświetl pracodawców
 //     return Users::all();
 // });
-
-// // rejestracja i logowanie w tym miejscu do zrobienia
 
 
 // Route::get('/v1/search', function() {
