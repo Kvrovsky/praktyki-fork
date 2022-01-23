@@ -16,7 +16,16 @@ class JobFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
-            
+            'description' => $this->faker->description(),
+            'permanent' => $this->faker->permanent(),
+            'remote' => $this->faker->remote(),
+            'wage' => $this->faker->wage(),
+            'wage_period' => $this->faker->wage_period(),
+            'negotiable' => $this->faker->negotiable(),
+            'city' => $this->faker->city(),
+            'days' => $this->faker->days(),
+            'category_id' => $this->faker->category_id(),
+            'user_id' => $this->faker->user_id(),
         ];
     }
 
