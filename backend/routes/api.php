@@ -34,6 +34,14 @@ Route::post('/login', [AuthController::class, 'login']); //login user
 Route::post('/me', [AuthController::class, 'me'])->middleware('auth:sanctum'); //fetch current user, jedynie dla autoryzowanych 
 
 
+Route::get('/v1/jobs/{id}', [JobController::class, 'getjob' ]);  //wyświetl konkretny job, działa
+
+
+Route::put('/v1/jobs/{id}', [JobController::class, 'editjob' ]); //edit job
+
+
+// Route::post('/v1/jobs', [JobController::class, 'createjob' ]); //dodaj joba
+
 
 // Route::put('/v1/jobs/:id', function(Request $request, $id) { //edytuj joba 
 //     //return Jobs::find($id);
@@ -42,11 +50,6 @@ Route::post('/me', [AuthController::class, 'me'])->middleware('auth:sanctum'); /
 //     return $job;
 // });
 
-
-
-// Route::get('/v1/jobs', function() { //wyświetl wszystkie jobsy
-//     return Jobs::all();
-// });
 
 
 
