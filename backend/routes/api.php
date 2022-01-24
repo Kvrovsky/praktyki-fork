@@ -41,11 +41,10 @@ Route::post('/me', [AuthController::class, 'me'])->middleware('auth:sanctum'); /
 Route::get('/v1/jobs/{id}', [JobController::class, 'getjob' ]); //wyświetl konkretny job
 
 
+Route::delete('/v1/jobs/{id}', [JobController::class, 'deletejob' ]); //usun job
 
 
-
-
-
+Route::post('/v1/jobs', [JobController::class, 'createjob' ]); //dodaj job
 
 
 // Route::put('/v1/jobs/:id', function(Request $request, $id) { //edytuj joba 
@@ -56,32 +55,10 @@ Route::get('/v1/jobs/{id}', [JobController::class, 'getjob' ]); //wyświetl konk
 // });
 
 
-
-// Route::get('/v1/jobs', function() { //wyświetl wszystkie jobsy
-//     return Jobs::all();
-// });
-
-
-
 // Route::post('/v1/jobs', function(Request $request) { //dodaj joba
 //     Jobs::create($request->all);
 //     return 201;
 // });
-
-
-
-// Route::delete('/v1/jobs/{id}', function($id) { //usun job 
-//     Jobs::find($id)->delete();
-//     return 204;
-// });
-
-
-
-// Route::get('/v1/jobs/:id', function($id) { //wyświetl konkretny job
-//     return Jobs::find($id);
-// });
-
-
 
 // Route::get('/v1/users', function() { //wyświetl pracodawców
 //     return Users::all();
