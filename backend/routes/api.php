@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\AuthController;
+// use App\Job;
 
 /*
 |--------------------------------------------------------------------------|
@@ -34,13 +35,22 @@ Route::post('/login', [AuthController::class, 'login']); //login user
 Route::post('/me', [AuthController::class, 'me'])->middleware('auth:sanctum'); //fetch current user, jedynie dla autoryzowanych 
 
 
-Route::get('/v1/jobs/{id}', [JobController::class, 'getjob' ]);  //wyświetl konkretny job, działa
+// Route::get('/v1/users', [UserController::class, 'getuser']); //wyswietl userow
 
 
-Route::put('/v1/jobs/{id}', [JobController::class, 'editjob' ]); //edit job
+// Route::put('/v1/jobs', [JobController::class, 'editjob']); //edytuj joba
 
 
-// Route::post('/v1/jobs', [JobController::class, 'createjob' ]); //dodaj joba
+Route::get('/v1/jobs/{id}', [JobController::class, 'getjob' ]); //wyświetl konkretny job 
+
+
+Route::get('/v1/users', [UserController::class, 'listusers']); //wyświetl userów, do usunięcia na koniec
+// Route::delete('/v1/jobs/{id}', [JobController::class, 'deletejob']; //usun job)
+
+
+
+
+
 
 
 // Route::put('/v1/jobs/:id', function(Request $request, $id) { //edytuj joba 
@@ -50,6 +60,11 @@ Route::put('/v1/jobs/{id}', [JobController::class, 'editjob' ]); //edit job
 //     return $job;
 // });
 
+
+
+// Route::get('/v1/jobs', function() { //wyświetl wszystkie jobsy
+//     return Jobs::all();
+// });
 
 
 
@@ -76,8 +91,6 @@ Route::put('/v1/jobs/{id}', [JobController::class, 'editjob' ]); //edit job
 // Route::get('/v1/users', function() { //wyświetl pracodawców
 //     return Users::all();
 // });
-
-// // rejestracja i logowanie w tym miejscu do zrobienia
 
 
 // Route::get('/v1/search', function() {
