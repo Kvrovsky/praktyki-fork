@@ -1,18 +1,21 @@
 <script>
-	
+	import { format, formatDistance, formatRelative, subDays } from 'date-fns'
 	import { onMount } from "svelte";
 	import { text } from "svelte/internal";
 	import Card from './components/Card.svelte'
 	// import logging from './Login.js'
+
 	
 
 	let hue = 0;
-	let name = '';
+	
 	let active = false
 	let jobs = [];
+	let name = '', email = '', password = ''
+	
 	onMount(async () => {
 		try{
-		const response = await fetch('http://localhost:8899/api/jobs');
+		const response = await fetch('http://localhost:8899/api/v1/jobs');
 		const data = await response.json();
 		console.log(data);
 		jobs = data.jobs;
@@ -22,7 +25,20 @@
 		
 	});
 	
+	const submit = async () =>{
+		await fetch('http://localhost:8900/api/register',{
+			method: 'POST',
+			headers: {'Content-Type': 'application/json'},
 	
+			body:JSON.stringify({
+				name,
+				email,
+				password
+			})
+
+		});
+		await goto('/login');
+	}
 	
 	//  document.querySelector("#login").addEventListener("click",function(){
 	//  	document.querySelector(".popup").classList.add("active");
@@ -43,29 +59,33 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
-	<h1 id="Header">JOBAZA {name}
+	<h1 id="Header">JOBAZA 
 		<button  id="login" on:click="{() => active = !active}">Zaloguj</button>
 		
 	 </h1>
 	 
 	 <div  class="popup" class:active={active}>
 		 <div class="close-btn" on:click="{() => active = !active}">&times;</div>
-		 <div class="form">
+		 <div class="form" on:submit|preventDefault={submit}>
 			<h2>Login</h2>
 			<div class="form-element">
+				<label for="name">Name</label>
+				<input bind:value={name} type="text" id="name" placeholder="Enter Name">
+			</div>
+			<div class="form-element">
 				<label for="email">Email</label>
-				<input type="text" id="email" placeholder="Enter Email">
+				<input bind:value={email} type="text" id="email" placeholder="Enter Email">
 			</div>
 			<div class="form-element">
 				<label for="password">Password</label>
-				<input type="text" id="password" placeholder="Enter Password">
+				<input bind:value={password} type="password" id="password" placeholder="Enter Password">
 			</div>
 			<div class="form-element">
 				<input type="checkbox" id="remember-me">
 				<label for="remember-me">Remember me</label>
 			</div>
 			<div class="form-element">
-				<button on:click="{() => active = !active}">Sign in</button>
+				<button  type="submit">Sign in</button>
 			</div>
 			<div class="form-element">
 				<a href="#">Forgot Password?</a>
@@ -88,6 +108,7 @@
 		</div>
 	</div>
     {/each} -->
+	
 	<div class="nav-bar">
 		<a class="active" href="#home"></a>
 		<a href="#wyszukaj" class="button">Wyszukaj</a>
@@ -97,7 +118,57 @@
 	</div>
 	
 	<div class="card-div">
+		{#each jobs as job}
 		<div class="card">
+			<div class="card-image">{job.name}</div>
+			<div class="card-text">
+				<span class="date">{formatDistance(new Date(job.created_at), new Date(), { addSuffix: true })} from {job.city}</span>
+				<h2>Lorem ipsum dolor sit amet.</h2>
+				<p>{job.wage / 100} zł </p>
+			</div>
+
+
+			<div class="card-stats">
+				<div class="stat">
+					<div class="value">4m</div>
+					<div class="type">read</div>
+				</div>
+				<div class="stat border">
+					<div class="value">243</div>
+					<div class="type">views</div>
+				</div>
+				<div class="stat">
+					<div class="value">124</div>
+					<div class="type">comments</div>
+				</div>
+			</div>
+		</div>
+		{/each}
+		<!-- <div class="card">
+			<div class="card-image"> </div>
+			<div class="card-text">
+				<span class="date">4 days ago</span>
+				<h2>Lorem ipsum dolor sit amet.</h2>
+				<p>Lorem ipsum dolor sit amet.</p>
+			</div>
+
+
+			<div class="card-stats">
+				<div class="stat">
+					<div class="value">4m</div>
+					<div class="type">read</div>
+				</div>
+				<div class="stat border">
+					<div class="value">243</div>
+					<div class="type">views</div>
+				</div>
+				<div class="stat">
+					<div class="value">124</div>
+					<div class="type">comments</div>
+				</div>
+			</div>
+		</div> -->
+		<!-- <div class="card">
 			<div class="card-image">Lorem ipsum dolor sit amet. </div>
 			<div class="card-text">
 				<span class="date">4 days ago</span>
@@ -144,55 +215,7 @@
 					<div class="type">comments</div>
 				</div>
 			</div>
-		</div>
-		<div class="card">
-			<div class="card-image">Lorem ipsum dolor sit amet. </div>
-			<div class="card-text">
-				<span class="date">4 days ago</span>
-				<h2>Lorem ipsum dolor sit amet.</h2>
-				<p>Lorem ipsum dolor sit amet.</p>
-			</div>
-
-
-			<div class="card-stats">
-				<div class="stat">
-					<div class="value">4m</div>
-					<div class="type">read</div>
-				</div>
-				<div class="stat border">
-					<div class="value">243</div>
-					<div class="type">views</div>
-				</div>
-				<div class="stat">
-					<div class="value">124</div>
-					<div class="type">comments</div>
-				</div>
-			</div>
-		</div>
-		<div class="card">
-			<div class="card-image">Lorem ipsum dolor sit amet. </div>
-			<div class="card-text">
-				<span class="date">4 days ago</span>
-				<h2>Lorem ipsum dolor sit amet.</h2>
-				<p>Lorem ipsum dolor sit amet.</p>
-			</div>
-
-
-			<div class="card-stats">
-				<div class="stat">
-					<div class="value">4m</div>
-					<div class="type">read</div>
-				</div>
-				<div class="stat border">
-					<div class="value">243</div>
-					<div class="type">views</div>
-				</div>
-				<div class="stat">
-					<div class="value">124</div>
-					<div class="type">comments</div>
-				</div>
-			</div>
-		</div>
+		</div> -->
 	</div>
 	
 	
@@ -207,7 +230,9 @@
 		overflow:hidden;
 		box-sizing: border-box;
 	}
-	
+	.active:hover{
+		color: #eee;
+	}
 	
 	#login{
 		font-size: 20px;
@@ -267,7 +292,8 @@
 		color:#222;
 	}
 	.popup .form .form-element input[type="text"],
-	.popup .form .form-element input[type="password"]{
+	.popup .form .form-element input[type="password"],
+	.popup .form .form-element input[type="name"]{
 		margin-top: 5px;
 		display: block;
 		width: 100%;
@@ -425,6 +451,10 @@
 		color: #363732;
 		font-size: 180%;
 		text-decoration: none;
+	}
+	.button:hover{
+		background-color: #eee;
+		transition: 0.5s;
 	}
 	@media (min-width: 640px) {
 		main {
