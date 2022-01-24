@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController; //do usuniecia
 // use App\Job;
 
 /*
@@ -45,6 +46,8 @@ Route::get('/v1/jobs/{id}', [JobController::class, 'getjob' ]); //wyświetl konk
 
 
 Route::get('/v1/users', [UserController::class, 'listusers']); //wyświetl userów, do usunięcia na koniec
+
+
 // Route::delete('/v1/jobs/{id}', [JobController::class, 'deletejob']; //usun job)
 
 
