@@ -38,6 +38,8 @@ Route::post('/me', [AuthController::class, 'me'])->middleware('auth:sanctum'); /
 // Route::get('/v1/users', [UserController::class, 'getuser']); //wyswietl userow
 
 
+Route::get('/v1/jobs/{id}', [JobController::class, 'getjob' ]); //wyświetl konkretny job
+
 
 
 
