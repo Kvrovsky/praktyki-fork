@@ -23,48 +23,48 @@ use App\Http\Controllers\JobController;
 
 Route::get('/v1/jobs', [JobController::class, 'listjobs']);
 
-Route::put('/v1/jobs/{id}', function(Request $request, $id) { //edytuj joba 
-    //return Jobs::find($id);
-    $job = Jobs::findOrFail($id);
-    $job->update($request->all());
-    return $job;
-});
+// Route::put('/v1/jobs/{id}', function(Request $request, $id) { //edytuj joba 
+//     //return Jobs::find($id);
+//     $job = Jobs::findOrFail($id);
+//     $job->update($request->all());
+//     return $job;
+// });
 
 
 
-Route::get('/v1/jobs', function() { //wyświetl wszystkie jobsy
-    return Jobs::all();
-});
+// Route::get('/v1/jobs', function() { //wyświetl wszystkie jobsy
+//     return Jobs::all();
+// });
 
 
 
-Route::post('/v1/jobs', function(Request $request) { //dodaj joba
-    Jobs::create($request->all);
-    return 201;
-});
+// Route::post('/v1/jobs', function(Request $request) { //dodaj joba
+//     Jobs::create($request->all);
+//     return 201;
+// });
 
 
 
-Route::delete('/v1/jobs/{id}', function($id) { //usun job 
-    Jobs::find($id)->delete();
-    return 204;
-});
+// Route::delete('/v1/jobs/{id}', function($id) { //usun job 
+//     Jobs::find($id)->delete();
+//     return 204;
+// });
 
 
 
-Route::get('/v1/jobs/{id}', function($id) { //wyświetl konkretny job
-    return Jobs::find($id);
-});
+// Route::get('/v1/jobs/{id}', function($id) { //wyświetl konkretny job
+//     return Jobs::find($id);
+// });
 
 
 
-Route::get('/v1/users', function() { //wyświetl pracodawców
-    return users::all();
-});
+// Route::get('/v1/users', function() { //wyświetl pracodawców
+//     return users::all();
+// });
 
-// rejestracja i logowanie w tym miejscu do zrobienia
+// // rejestracja i logowanie w tym miejscu do zrobienia
 
 
-Route::get('/v1/search', function() {
-    Jobs::find($name)->return;
-});
+// Route::get('/v1/search', function() {
+//     Jobs::find($name)->return;
+// });
