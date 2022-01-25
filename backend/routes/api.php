@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 // use App\Job;
 
 /*
@@ -35,9 +36,6 @@ Route::post('/login', [AuthController::class, 'login']); //login user
 Route::post('/me', [AuthController::class, 'me'])->middleware('auth:sanctum'); //fetch current user, jedynie dla autoryzowanych 
 
 
-// Route::get('/v1/users', [UserController::class, 'getuser']); //wyswietl userow
-
-
 Route::get('/v1/jobs/{id}', [JobController::class, 'getjob' ]); //wyświetl konkretny job
 
 
@@ -47,19 +45,13 @@ Route::delete('/v1/jobs/{id}', [JobController::class, 'deletejob' ]); //usun job
 Route::post('/v1/jobs', [JobController::class, 'createjob' ]); //dodaj job
 
 
-// Route::put('/v1/jobs/:id', function(Request $request, $id) { //edytuj joba 
-//     //return Jobs::find($id);
-//     $job = Jobs::findOrFail($id);
-//     $job->update($request->all());
-//     return $job;
-// });
+Route::post('/v1/jobs/{id}', [JobController::class, 'editjob' ]); //edytuj job
 
 
-// Route::get('/v1/users', function() { //wyświetl pracodawców
-//     return Users::all();
-// });
+Route::get('/v1/users', [UserController::class, 'listusers' ]); //wyswietl userow, bardziej do testow
 
 
-// Route::get('/v1/search', function() {
-//     Jobs::find($name)->return;
-// });
+Route::get('/v1/jobs/search/{name}', [JobController::class, 'searchjob' ]); //wyszukaj job
+
+
+// Dzialajacy plik api.php
