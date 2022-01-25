@@ -18,7 +18,7 @@ class JobController extends Controller
         $job = Job::find($id);
         if ($job) {
             return response()->json([
-                'message' => '404 Not Found'
+                // 'message' => '404 Not Found'
             ], 400);
         }
     return response()->json($job, 200);

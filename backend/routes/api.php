@@ -55,11 +55,6 @@ Route::post('/v1/jobs', [JobController::class, 'createjob' ]); //dodaj job
 // });
 
 
-// Route::post('/v1/jobs', function(Request $request) { //dodaj joba
-//     Jobs::create($request->all);
-//     return 201;
-// });
-
 // Route::get('/v1/users', function() { //wyświetl pracodawców
 //     return Users::all();
 // });
