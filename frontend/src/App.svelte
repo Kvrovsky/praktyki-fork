@@ -3,8 +3,22 @@
 	import { format, formatDistance, formatRelative, subDays } from 'date-fns'
 	import { onMount } from "svelte";
 	import { text } from "svelte/internal";
-	import Card from './components/Card.svelte'
+	import Card from './components/Card.svelte';
 	// import logging from './Login.js'
+
+
+	import Home from './routes/Home.svelte';
+	import Ogloszenia from './routes/Ogloszenia.svelte';
+	import Pracodawcy from './routes/Pracodawcy.svelte';
+
+
+	//last
+	import { Router, Link, Route } from "svelte-routing";
+	// import Home from "./routes/Home.svelte";
+	// import Ogloszenia from "./routes/Ogloszenia.svelte";
+	// import Pracodawcy from "./routes/Pracodawcy.svelte";
+
+  	export let url = "";
 	
 	
 
@@ -60,6 +74,23 @@
 	
 	
 </script>
+
+
+
+<!-- last -->
+<Router url="{url}">
+	<nav>
+	  <Link to="/">Home</Link>
+	  <Link to="ogloszenia">Ogłoszenia</Link>
+	  <Link to="pracodawcy">Pracodawcy</Link>
+	</nav>
+	<div>
+	  <Route path="ogloszenia" component="{Ogloszenia}" />
+	  <Route path="pracodawcy" component="{Pracodawcy}" />
+	  <!-- <Route path="about" component="{About}" /> -->
+	  <Route path="/"><Home /></Route>
+	</div>
+  </Router>
 
 
 
@@ -128,10 +159,12 @@
 	<div class="card-div">
 		{#each jobs as job}
 		<div class="card">
-			<div class="card-image">{job.name}</div>
+			<div class="card-image">{job.days}</div>
 			<div class="card-text">
+				<img src="https://s2.fbcdn.pl/7/clubs/61197/team/n/bartek-piekutowski-14.jpg" alt="Zdjęcie poglądowe" weight="100px" height="50px" >
+				<br>
 				<span class="date">{formatDistance(new Date(job.created_at), new Date(), { addSuffix: true })} from {job.city}</span>
-				<h2>Lorem ipsum dolor sit amet.</h2>
+				<h2>{job.name}</h2>
 				<p>{job.wage / 100} zł </p>
 			</div>
 
