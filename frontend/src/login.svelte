@@ -26,18 +26,7 @@
 	});
 	
 	const submit = async () =>{
-		await fetch('http://localhost:8900/api/register',{
-			method: 'POST',
-			headers: {'Content-Type': 'application/json'},
-	
-			body:JSON.stringify({
-				name,
-				email,
-				password
-			})
-
-		});
-		await goto('/login');
+		await fetch('http://localhost:8900/api/register',)
 	}
 	
 	//  document.querySelector("#login").addEventListener("click",function(){
@@ -70,7 +59,7 @@
 			<h2>Login</h2>
 			<div class="form-element">
 				<label for="name">Name</label>
-				<input bind:value={name} type="text" id="name" placeholder="Enter Name">
+				<input bind:value={name} type="text" id="email" placeholder="Enter Name">
 			</div>
 			<div class="form-element">
 				<label for="email">Email</label>
@@ -78,14 +67,14 @@
 			</div>
 			<div class="form-element">
 				<label for="password">Password</label>
-				<input bind:value={password} type="password" id="password" placeholder="Enter Password">
+				<input bind:value={password} type="text" id="password" placeholder="Enter Password">
 			</div>
 			<div class="form-element">
 				<input type="checkbox" id="remember-me">
 				<label for="remember-me">Remember me</label>
 			</div>
 			<div class="form-element">
-				<button  type="submit">Sign in</button>
+				<button on:click="{() => console.log}" type="submit">Login</button>
 			</div>
 			<div class="form-element">
 				<a href="#">Forgot Password?</a>
