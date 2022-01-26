@@ -40,6 +40,7 @@
 	let active = false
 	let jobs = [];
 	let firstname = '', email = '', password = ''
+	let page = [];
 	
 	onMount(async () => {
 		try{
@@ -103,7 +104,7 @@
 	<div>
 	  <Route path="ogloszenia" component="{Ogloszenia}" />
 	  <Route path="pracodawcy" component="{Pracodawcy}" />
-	  <Route path="about" component="{About}" />
+	  <!-- <Route path="about" component="{About}" /> -->
 	  <Route path="/"><Home /></Route>
 	</div>
   </Router>
@@ -147,7 +148,7 @@
 				<button on:click={submit} type="submit">Sign in</button>
 			</div>
 			<div class="form-element">
-				<a href="#">Forgot Password?</a>
+				<a href="#pass">Forgot Password?</a>
 			</div>
 		 </div>
 	 </div>
@@ -169,6 +170,7 @@
     {/each} -->
 	
 	<div class="nav-bar">
+		<!-- svelte-ignore a11y-missing-content -->
 		<a class="active" href="#home"></a>
 		<a href="#wyszukaj" class="button">Wyszukaj</a>
 		<a href="#Ogłoszenia" class="button">Ogloszenia</a>
