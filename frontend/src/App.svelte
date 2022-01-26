@@ -1,17 +1,18 @@
+
 <script>
 	import { format, formatDistance, formatRelative, subDays } from 'date-fns'
 	import { onMount } from "svelte";
 	import { text } from "svelte/internal";
 	import Card from './components/Card.svelte'
 	// import logging from './Login.js'
-
+	
 	
 
 	let hue = 0;
 	
 	let active = false
 	let jobs = [];
-	let name = '', email = '', password = ''
+	let firstname = '', email = '', password = ''
 	
 	onMount(async () => {
 		try{
@@ -26,19 +27,26 @@
 	});
 	
 	const submit = async () =>{
-		await fetch('http://localhost:8900/api/register',{
+		await fetch('http://localhost:8899/api/register', {
 			method: 'POST',
 			headers: {'Content-Type': 'application/json'},
-	
+			credentials:'include',
 			body:JSON.stringify({
-				name,
+				firstname,
 				email,
 				password
 			})
 
 		});
-		await goto('/login');
+		await goto('/login.svelte');
 	}
+	var allowCrossDomain = function(req, res, next) {
+    res.header('Access-Control-Allow-Origin: True', 'http://localhost:8899');
+    res.header('Access-Control-Allow-Credentials', true);
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+	};
 	
 	//  document.querySelector("#login").addEventListener("click",function(){
 	//  	document.querySelector(".popup").classList.add("active");
@@ -70,7 +78,7 @@
 			<h2>Login</h2>
 			<div class="form-element">
 				<label for="name">Name</label>
-				<input bind:value={name} type="text" id="name" placeholder="Enter Name">
+				<input bind:value={firstname} type="text" id="name" placeholder="Enter Name">
 			</div>
 			<div class="form-element">
 				<label for="email">Email</label>
@@ -85,7 +93,7 @@
 				<label for="remember-me">Remember me</label>
 			</div>
 			<div class="form-element">
-				<button  type="submit">Sign in</button>
+				<button on:click={submit} type="submit">Sign in</button>
 			</div>
 			<div class="form-element">
 				<a href="#">Forgot Password?</a>
@@ -412,7 +420,7 @@
 		border-right:2px solid #363732;
 	}
 	.card:hover{
-		transform:scale(1.2);
+		transform:scale(1.1);
 		box-shadow: 5px 5px 5px rgba(0,0,0,0.6);
 	}
 
