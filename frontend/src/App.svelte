@@ -7,19 +7,32 @@
 	// import logging from './Login.js'
 
 
-	import Home from './routes/Home.svelte';
+	import Home from './App.svelte';
 	import Ogloszenia from './routes/Ogloszenia.svelte';
 	import Pracodawcy from './routes/Pracodawcy.svelte';
 
 
+
+
+
 	//last
 	import { Router, Link, Route } from "svelte-routing";
+	import router from "page";
 	// import Home from "./routes/Home.svelte";
 	// import Ogloszenia from "./routes/Ogloszenia.svelte";
 	// import Pracodawcy from "./routes/Pracodawcy.svelte";
 
   	export let url = "";
 	
+	router('/', () => page = Home)
+	router('/pracodawcy', () => page = Pracodawcy)
+
+	router.start()
+
+
+
+
+
 	
 
 	let hue = 0;
@@ -74,6 +87,9 @@
 	
 	
 </script>
+<svelte:component this={page} />
+
+
 
 
 
@@ -87,10 +103,14 @@
 	<div>
 	  <Route path="ogloszenia" component="{Ogloszenia}" />
 	  <Route path="pracodawcy" component="{Pracodawcy}" />
-	  <!-- <Route path="about" component="{About}" /> -->
+	  <Route path="about" component="{About}" />
 	  <Route path="/"><Home /></Route>
 	</div>
   </Router>
+
+
+
+
 
 
 
@@ -152,7 +172,7 @@
 		<a class="active" href="#home"></a>
 		<a href="#wyszukaj" class="button">Wyszukaj</a>
 		<a href="#Ogłoszenia" class="button">Ogloszenia</a>
-		<a href="#Pracodawcy" class="button">Pracodawcy</a>
+		<a href="#pracodawcy" class="button">Pracodawcy</a>
 		<a href="#Pomoc" class="button">Pomoc</a>
 	</div>
 	
@@ -185,6 +205,7 @@
 			</div>
 		</div>
 		{/each}
+
 		<!-- <div class="card">
 			<div class="card-image"> </div>
 			<div class="card-text">
