@@ -6,14 +6,9 @@
 	import Card from './components/Card.svelte';
 	// import logging from './Login.js'
 
-
 	// import Home from './App.svelte';
 	// import Ogloszenia from './routes/Ogloszenia.svelte';
 	// import Pracodawcy from './routes/Pracodawcy.svelte';
-
-
-
-
 
 	//last
 	// import { Router, Link, Route } from "svelte-routing";
@@ -28,12 +23,6 @@
 	// router('/pracodawcy', () => page = Pracodawcy)
 
 	// router.start()
-
-
-
-
-
-	
 
 	let hue = 0;
 	
@@ -68,13 +57,14 @@
 		});
 		await goto('/login.svelte');
 	}
-	var allowCrossDomain = function(req, res, next) {
-    res.header('Access-Control-Allow-Origin: True', 'http://localhost:8899');
-    res.header('Access-Control-Allow-Credentials', true);
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-	};
+	// var allowCrossDomain = function(req, res, next) {
+	// // var myMode = no-cors;
+    // res.header('Access-Control-Allow-Origin: True', 'http://localhost:8899');
+    // res.header('Access-Control-Allow-Credentials', true);
+    // res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    // res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    // next();
+	// };
 	
 	//  document.querySelector("#login").addEventListener("click",function(){
 	//  	document.querySelector(".popup").classList.add("active");
